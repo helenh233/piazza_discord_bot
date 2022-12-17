@@ -84,7 +84,7 @@ async def notifications(ids):
                         if answer['type'] == 's_answer':
                             reply = answer['history'][0]['content']
 
-                reply = prettify(reply)
+                reply = prettify(reply, 'content')
                 
                 # Search through previous 100 messages in Discord channel for original question (identifiable by unique URL)
                 async for message in channel.history(limit=100):
