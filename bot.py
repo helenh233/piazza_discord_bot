@@ -50,7 +50,7 @@ async def notifications(ids):
             info = course.get_post(cid=post['id'])
             
             # Link to the Piazza post
-            url = f"https://piazza.com/class/{network_id}/post/{info['nr']}"
+            link = f"https://piazza.com/class/{network_id}/post/{info['nr']}"
             
             # Most recent action on that post
             action = info['change_log'][-1]['type']
@@ -66,7 +66,7 @@ async def notifications(ids):
                 content = prettify(content, 'content')
                 
                 # Send summary of the post as a message into the Discord channel
-                await channel.send(subject + '\n' + content + '\n\n' + url)
+                await channel.send(subject + '\n' + content + '\n\n' + link)
 
             # An answer has been created/updated for a question followed by the user
             elif info['is_bookmarked']:
@@ -88,7 +88,7 @@ async def notifications(ids):
                 
                 # Search through previous 100 messages in Discord channel for original question (identifiable by unique URL)
                 async for message in channel.history(limit=100):
-                    if url in message.content:
+                    if link in message.content:
                         await message.reply(f"__**{answerer} answer**__\n{reply}")
                     
         
