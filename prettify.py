@@ -1,5 +1,5 @@
 import re # Module that searches for Regular Expressions (built-in)
-import urllib.parse # Module that quotes URLs (pip install urllib)
+import urllib.parse as url # Module that quotes URLs (pip install urllib)
 from bs4 import BeautifulSoup # Module that processes HTML (pip install beautifulsoup4)
 
 #######################################################################################################
@@ -9,8 +9,8 @@ prettify replaces all Piazza markdowns in (text) with their corresponding Discor
 Also replaces images with links, and LaTex with a link to the rendered image
 Str -> Str
 '''
-def prettify(text, type):
-    if type == 'content':
+def prettify(text, text_type):
+    if text_type == 'content':
         # Removes formatting on empty line breaks #####################################################
         empty_lines = ['<strong></strong>', '<em></em>', '<code></code>', 
                        '<span style="text-decoration:underline"></span>', 
@@ -62,7 +62,7 @@ def prettify(text, type):
             Used to encode the path section of a URL
             Str -> Str
             '''
-            path = urllib.parse.quote(tex)
+            path = url.quote(tex)
             text = text.replace(line, 'https://latex.codecogs.com/png.image?%5Cdpi%7B300%7D%5Cbg%7Bblack%7D'+path)
             
         # >>> Discord quote markdown ###################################################################
