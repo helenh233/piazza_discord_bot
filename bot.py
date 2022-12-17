@@ -12,7 +12,7 @@ from prettify import *
 p = Piazza()
 p.user_login(email=EMAIL, password=PASSWORD)
 
-# Connects to Discord bot                                                        test out intent #
+# Connects to Discord bot
 client = discord.Client(intents=discord.Intents.all())
 
 @client.event
