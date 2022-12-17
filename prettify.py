@@ -12,11 +12,11 @@ Str -> Str
 def prettify(content):
 
     # Removes formatting on empty line breaks ##################################################
-    content = content.replace('<strong></strong>', '')
-    content = content.replace('<em></em>', '')
-    content = content.replace('<code></code>', '')
-    content = content.replace('<span style="text-decoration:underline"></span>', '')
-    content = content.replace('<span style="text-decoration:line-through"></span>', '')
+    empty_lines = ['<strong></strong>', '<em></em>', '<code></code>', 
+                   '<span style="text-decoration:underline"></span>', 
+                   '<span style="text-decoration:line-through"></span>']
+    for line in empty_lines:
+        content = content.replace(line, '')
     
     # Piazza -> Discord markdown ##############################################################
     '''
