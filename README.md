@@ -7,12 +7,12 @@ If a student/instructor answer is created/updated for a Piazza post that the use
 
 
 ### To use
-In 'credentials.py', input a Piazza email and password, Discord bot token, and Piazza network IDs with their coressponding Discord channel IDs.  
+In `credentials.py`, input a Piazza email and password, Discord bot token, and Piazza network IDs with their coressponding Discord channel IDs.  
 
 Install the needed libraries:  
-'''
+```
 pip install -U discord.py  
 pip install piazza-api  
 pip install urllib  
 pip install beautifulsoup4  
-'''
+```
