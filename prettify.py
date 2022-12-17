@@ -1,8 +1,8 @@
 import re # Module that searches for Regular Expressions (built-in)
-import urllib.parse # Module that quotes URLs ()
-from bs4 import BeautifulSoup # (pip install beautifulsoup4)
+import urllib.parse # Module that quotes URLs (pip install urllib)
+from bs4 import BeautifulSoup # Module that processes HTML (pip install beautifulsoup4)
 
-###############################################################################################
+###################################################################################################
 
 '''
 prettify replaces all Piazza markdowns in (content) with their corresponding Discord markdowns
@@ -11,14 +11,14 @@ Str -> Str
 '''
 def prettify(content):
 
-    # Removes formatting on empty line breaks ##################################################
+    # Removes formatting on empty line breaks #####################################################
     empty_lines = ['<strong></strong>', '<em></em>', '<code></code>', 
                    '<span style="text-decoration:underline"></span>', 
                    '<span style="text-decoration:line-through"></span>']
     for line in empty_lines:
         content = content.replace(line, '')
     
-    # Piazza -> Discord markdown ##############################################################
+    # Piazza -> Discord markdown ##################################################################
     '''
     re.sub returns (string) with all instances of (pattern) replaced with (repl)
     Str Str Str -> Str
@@ -64,8 +64,12 @@ def prettify(content):
         '''
         path = urllib.parse.quote(tex)
         content = content.replace(line, 'https://latex.codecogs.com/png.image?%5Cdpi%7B300%7D%5Cbg%7Bblack%7D'+path)
-
+    ##############################################################################################
     # >>> Discord quote markdown
+    '''
+    BeautifulSoup removes paragraph tags and translates HTML entities to Unicode characters
+    Str Str -> Str
+    '''
     content = '>>> ' + BeautifulSoup(content, 'html.parser').text
     
     return content
