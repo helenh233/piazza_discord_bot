@@ -1,8 +1,7 @@
 import discord # (pip install -U discord.py)
 from discord.ext import tasks, commands # extension library
 
-from piazza_api import Piazza # (pip install piazza-api)
-from piazza_api import network                                                           #merge with above?
+from piazza_api import Piazza, network # (pip install piazza-api)
 
 from credentials import EMAIL, PASSWORD, DISCORD_TOKEN, IDs # Needs to be filled out
 from prettify import *
