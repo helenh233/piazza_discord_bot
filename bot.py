@@ -17,6 +17,9 @@ client = discord.Client(intents=discord.Intents.all())
 
 @client.event
 async def on_ready():
+    for guild in client.guilds:
+        if guild.name == 'School':
+            break
     print(f'{client.user} is connected to {guild.name}') # to console
     notifications.start(IDs)
 
